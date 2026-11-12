@@ -1,0 +1,5 @@
+# data files are rebuilt by scripts/build_db.py
+data/
+.venv/
+__pycache__/
+.pytest_cache/

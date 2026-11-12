@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operations Insights</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to insights</a>
+  <header class="top">
+    <div>
+      <h1>Operations Insights</h1>
+      <p class="sub">Four questions an operations manager asks, answered with SQL. Synthetic demo data.</p>
+    </div>
+    <nav aria-label="Pages"><a href="/">Dashboard</a> &nbsp;|&nbsp; <a href="/metrics">Metric definitions</a></nav>
+  </header>
+
+  <main id="main">
+    <p id="status" class="status" role="status" aria-live="polite">Loading insights&hellip;</p>
+
+    <section class="card" aria-labelledby="h-hot">
+      <h2 id="h-hot">1. Where are callbacks highest?</h2>
+      <p class="hint">Branch and service pairs compared with the company callback rate (1.0x = average). Only pairs with enough completed visits are shown.</p>
+      <p class="takeaway" id="t-hot"></p>
+      <div id="c-hot" class="chart"></div>
+      <p class="action"><strong>What I would do:</strong> <span id="a-hot"></span></p>
+    </section>
+
+    <section class="card" aria-labelledby="h-tech">
+      <h2 id="h-tech">2. Which technicians may need coaching?</h2>
+      <p class="hint">Callback rate relative to the technician's own branch average, so each person is compared with local conditions.</p>
+      <p class="takeaway" id="t-tech"></p>
+      <div id="c-tech" class="chart"></div>
+      <p class="action"><strong>What I would do:</strong> <span id="a-tech"></span></p>
+    </section>
+
+    <section class="card" aria-labelledby="h-season">
+      <h2 id="h-season">3. When does demand peak for each service?</h2>
+      <p class="hint">Monthly completed visits for 2025 as a multiple of that service's own monthly average. Darker means busier.</p>
+      <p class="takeaway" id="t-season"></p>
+      <div id="c-season" class="chart"></div>
+      <p class="action"><strong>What I would do:</strong> <span id="a-season"></span></p>
+    </section>
+
+    <section class="card" aria-labelledby="h-plan">
+      <h2 id="h-plan">4. What does each customer plan earn per visit?</h2>
+      <p class="hint">Uses the customer history table (slowly changing dimension), so each visit counts under the plan the customer had on that date.</p>
+      <p class="takeaway" id="t-plan"></p>
+      <div id="c-plan" class="chart"></div>
+      <p class="action"><strong>What I would do:</strong> <span id="a-plan"></span></p>
+    </section>
+  </main>
+
+  <footer><p id="note"></p></footer>
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+  <script src="{{ url_for('static', filename='vendor/d3.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='insights.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metric definitions</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="top">
+    <div><h1>Metric definitions</h1>
+      <p class="sub">One definition per metric, used by the dashboard and checked by tests.</p></div>
+    <nav aria-label="Pages"><a href="/">Dashboard</a> &nbsp;|&nbsp; <a href="/insights">Insights</a></nav>
+  </header>
+  <main>
+    <div class="tablewrap"><table class="data">
+      <thead><tr><th>Metric</th><th>Definition</th><th>Formula (on the aggregate table)</th><th>Better when</th></tr></thead>
+      <tbody>
+      {% for id, m in metrics.items() %}
+        <tr><th scope="row">{{ m.label }}</th><td>{{ m.definition }}</td><td><code>{{ m.formula }}</code></td><td>{{ 'Higher' if m.good == 'up' else 'Lower' }}</td></tr>
+      {% endfor %}
+      </tbody></table></div>
+    <h2>Grain and sources</h2>
+    <ul class="plain">
+      <li><strong>Fact grain:</strong> one row per scheduled service visit (<code>fact_service_visit</code>).</li>
+      <li><strong>Dashboard source:</strong> <code>agg_daily_branch_service</code>, one row per day, branch and service, rebuilt from the fact table.</li>
+      <li><strong>Comparisons:</strong> change is measured against the same dates one year earlier, so seasonal swings do not look like growth or decline.</li>
+      <li><strong>Customer plan:</strong> stored as a slowly changing dimension (type 2), so each visit points at the plan the customer had on the visit date.</li>
+    </ul>
+  </main>
+</body>
+</html>
