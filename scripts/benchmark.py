@@ -1,7 +1,6 @@
 """Measure p50 / p95 server time per endpoint.  Run:  python scripts/benchmark.py [runs]
 
-The job post talks about a p95 target of under 1 second. This is how you would
-check that claim: many runs, report percentiles, never a single run.
+Target: p95 under 1 second. This is how that claim is checked: many runs, report percentiles, never a single run.
 Times are for THIS demo (SQLite, ~190k fact rows, local machine), not Azure SQL.
 """
 import statistics

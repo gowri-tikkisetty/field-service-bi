@@ -1,4 +1,4 @@
--- Practice / interview queries on the star schema. Each one is executed by tests/test_sql_examples.py.
+-- Practice report queries on the star schema. Each one is executed by tests/test_sql_examples.py.
 -- SQLite syntax; the T-SQL differences are noted in comments.
 
 -- Q1. Monthly revenue with month-over-month % change (CTE + LAG window function)
