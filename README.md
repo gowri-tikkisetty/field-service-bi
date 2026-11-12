@@ -17,7 +17,6 @@ covering SQL, data modeling, data visualization and UI/UX.
 | Validate new reports against existing ones, document metric definitions | `tests/test_api.py::test_kpis_match_raw_fact_table`, `/metrics` page |
 | Python / Flask backend, JavaScript + D3 front end | `app/app.py`, `app/static/app.js` |
 | Data visualization and UI/UX judgment | see "Design decisions" below |
-| Git workflow | see "Put it on GitHub" below |
 
 ## Run it (step by step)
 
